@@ -153,6 +153,12 @@ void player::normalize(game *g)
   hp_max[i] = 60 + str_max * 3;
   if (has_trait(PF_TOUGH))
    hp_max[i] = int(hp_max[i] * 1.2);
+  if (has_trait(PF_PONDEROUS1))
+   hp_max[i] = int(hp_max[i] * 1.1);
+  if (has_trait(PF_PONDEROUS2))
+   hp_max[i] = int(hp_max[i] * 1.2);
+  if (has_trait(PF_PONDEROUS3))
+   hp_max[i] = int(hp_max[i] * 1.3);
   hp_cur[i] = hp_max[i];
  }
 }
@@ -339,6 +345,12 @@ int player::current_speed(game *g)
 
  if (has_trait(PF_QUICK))
   newmoves = int(newmoves * 1.10);
+  
+ if (has_trait(PF_LIGHT_BONES))
+  newmoves = int(newmoves * 1.15);
+
+ if (has_trait(PF_HOLLOW_BONES))
+  newmoves = int(newmoves * 1.20);
 
  if (g != NULL) {
   if (has_trait(PF_SUNLIGHT_DEPENDENT) && !g->is_in_sunlight(posx, posy))

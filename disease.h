@@ -374,7 +374,7 @@ void dis_effect(game *g, player &p, disease &dis)
   if (int(g->turn) % 25 == 0) {
    if (p.fatigue > 0)
     p.fatigue -= 1 + rng(0, 1) * rng(0, 1);
-   if (p.has_trait(PF_FASTHEALER))
+   if (p.has_trait(PF_FASTHEALER || PF_HEAVYSLEEPER))
     p.healall(rng(0, 1));
    else
     p.healall(rng(0, 1) * rng(0, 1) * rng(0, 1));
